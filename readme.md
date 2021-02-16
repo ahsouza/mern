@@ -19,7 +19,7 @@
     </a>
   </p>
   <div style="display: flex" align="center">
-    <img src="assets/react.png" width=50 height=50 title='react'/> <img src="assets/node.png" width=50 height=50 title='node'/> <img src="assets/mysql.png" width=50 height=50 title='mysql'/><img src="assets/mongodb.png" width=50 height=50 title='mysql'/> <img src="assets/html.png" width=50 height=50 title='html'/> <img src="assets/css.png" width=50 height=50 title='css'/> <img src="assets/express.png" width=50 height=50 title='express'/> <img src="assets/npm.png" width=50 height=50 title='npm'/> 
+    <img src="assets/react.png" width=50 height=50 title='react'/> <img src="assets/nodejs.png" width=50 height=50 title='node'/> <img src="assets/mysql.png" width=50 height=50 title='mysql'/><img src="assets/mongodb.png" width=50 height=50 title='mysql'/> <img src="assets/html.png" width=50 height=50 title='html'/> <img src="assets/css.png" width=50 height=50 title='css'/> <img src="assets/express.png" width=50 height=50 title='express'/> <img src="assets/npm.png" width=50 height=50 title='npm'/> 
   </div>
 </p>
 
@@ -32,7 +32,6 @@
 ```
 branch: main
 
-├📄 .github
 ├📂 assets
 ├📂 client
 └📂 server
