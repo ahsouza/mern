@@ -30,7 +30,7 @@
 ## Estrutura de Arquivos & Pastas
 
 ```
-branch: main
+branch: master
 
 ├📂 assets
 ├📂 client
@@ -39,6 +39,7 @@ branch: main
   ├📂 controllers
   ├📂 models
   ├📂 test
+  └📄 .env-example
   └📄 package.json
   └📄 server.js
 ├📄 readme.md
@@ -70,6 +71,7 @@ Ramificações (branch) ```git branch -a```
 - [mocha-test](https://github.com/ahsouza/mern/tree/mocha-test)
 - [gh-pages](https://github.com/ahsouza/mern/tree/gh-pages)
 - [firebase-deploy](https://github.com/ahsouza/mern/tree/firebase-deploy)
+- [netlify-deploy](https://github.com/ahsouza/mern/tree/netlify-deploy)
 
 <br>
 <br>
@@ -84,7 +86,7 @@ Ramificações (branch) ```git branch -a```
 
 <br>
 
-Fazer [download](https://github.com/ahsouza/mern/archive/frontend.zip) do projeto frontend `Reactjs.js 17.6.2`
+Fazer [download](https://github.com/ahsouza/mern/archive/frontend.zip) do projeto frontend `Reactjs.js 17.0.1`
 
 <br>
 
