@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "MERN 2021",
+  "name": "CRUD com MongoDB/MySQL + Express.js + React.js + Node.js",
   "icons": [
     {
       "src": "favicon.ico",
