@@ -5,7 +5,6 @@ const
  expect = chai.expect,
  urlBase = "https://mern-ahsouza.herokuapp.com/api/imoveis";
 
-
 describe("API REST Imóveis App",()=>{
   it("Retorno de todos imoveis registrados",(done)=>{
     request.get({url: urlBase}, (error, res, body) => {
