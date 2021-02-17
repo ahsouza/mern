@@ -13,15 +13,15 @@ import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 import AddressForm from './AddressForm';
 import Description from './Description';
-import PaymentForm from './PaymentForm';
+import About from './About';
 import Review from './Review';
 
 function Copyright() {
   return (
     <Typography variant="body2" color="primary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+      <Link color="inherit" href="https://ahsouza.github.io/mecontrata">
+        Aníbal Henrique De Souza
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -30,6 +30,9 @@ function Copyright() {
 }
 
 const useStyles = makeStyles((theme) => ({
+  margin: {
+    height: theme.spacing(3),
+  },
   appBar: {
     position: 'relative',
     borderBottom: `1px solid ${theme.palette.divider}`,
@@ -67,7 +70,7 @@ function getStepContent(step: number) {
     case 0:
       return <AddressForm />;
     case 1:
-      return <PaymentForm />;
+      return <About />;
     case 2:
       return <Review />;
     default:
@@ -92,9 +95,6 @@ export default function Checkout() {
       <CssBaseline />
       <Container component="main" className={classes.main} maxWidth="sm">
         <Paper className={classes.paper} variant="outlined">
-          <Typography component="h1" variant="h4" align="center">
-            Vamos começar...
-          </Typography>
           <Stepper activeStep={activeStep} className={classes.stepper}>
             {steps.map((label) => (
               <Step key={label}>
@@ -106,20 +106,25 @@ export default function Checkout() {
             {activeStep === steps.length ? (
               <React.Fragment>
                 <Typography variant="h5" gutterBottom>
-                  Thank you for your order.
+                  Parabéns!!
                 </Typography>
+                <div className={classes.margin} />
                 <Typography variant="subtitle1">
-                  Your order number is #2001539. We have emailed your order
-                  confirmation, and will send you an update when your order has
-                  shipped.
+                  Agora ficou mais fácil das pessoas encontrarem seu imóvel. Enviamos sua campanha por e-mail,
+                  após a confirmação nós enviaremos uma atualização quando seu primeiro cliente se interessar
+                  enviado.
                 </Typography>
+                <div className={classes.margin} />
+                <Button variant="outlined" color="secondary" href="/" className={classes.button}>
+                  Imóveis
+                </Button>
               </React.Fragment>
             ) : (
               <React.Fragment>
                 {getStepContent(activeStep)}
                 <div className={classes.buttons}>
                   {activeStep !== 0 && (
-                    <Button color="secondary" onClick={handleBack} className={classes.button}>
+                    <Button variant="outlined" color="secondary" onClick={handleBack} className={classes.button}>
                       Voltar
                     </Button>
                   )}
@@ -129,7 +134,7 @@ export default function Checkout() {
                     color="secondary"
                     className={classes.button}
                   >
-                    {activeStep === steps.length - 1 ? 'Place order' : 'Próximo'}
+                    {activeStep === steps.length - 1 ? 'Finalizar' : 'Próximo'}
                   </Button>
                 </div>
               </React.Fragment>

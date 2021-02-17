@@ -18,9 +18,7 @@ export default function AddressForm() {
   };
   return (
     <React.Fragment>
-      <Typography variant="h6" gutterBottom>
-        Aonde está localizado seu imóvel?
-      </Typography>
+      <br/>
       <Grid container spacing={3}>
         <Grid item xs={8} sm={8}>
           <TextField
@@ -66,20 +64,12 @@ export default function AddressForm() {
         <Grid item xs={12} sm={4}>
           <TextField
             required
-            type="number"
             id="cep"
             name="cep"
             label="Cep"
             fullWidth
             autoComplete="2916...."
             variant="standard"
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <br/>
-          <FormControlLabel
-            control={<Checkbox color="secondary" name="saveAddress" value="yes" />}
-            label="Utilizar este endereço para meios de pagamento"
           />
         </Grid>
       </Grid>

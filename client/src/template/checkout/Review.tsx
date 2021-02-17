@@ -2,79 +2,104 @@ import * as React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
+import { withStyles, makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import Slider from '@material-ui/core/Slider';
+import Tooltip from '@material-ui/core/Tooltip';
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      width: 300 + theme.spacing(3) * 2,
+    },
+    margin: {
+      height: theme.spacing(3),
+    },
+  }),
+);
+
+interface Props {
+  children: React.ReactElement;
+  open: boolean;
+  value: number;
+}
+
+function ValueLabelComponent(props: Props) {
+  const { children, open, value } = props;
+
+  return (
+    <Tooltip open={open} enterTouchDelay={0} placement="top" title={value}>
+      {children}
+    </Tooltip>
+  );
+}
+const iOSBoxShadow =
+  '0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.13),0 0 0 1px rgba(0,0,0,0.02)';
+
+const marks = [
+  {
+    value: 40,
+    label: '40K',
+  },
+  {
+    value: 500,
+    label: '500K',
+  },
+  {
+    value: 1000,
+    label: '1M',
+  },
+];
+
+
+const PrettoSlider = withStyles({
+  root: {
+    color: '#52af77',
+    height: 15,
+  },
+  thumb: {
+    height: 24,
+    width: 24,
+    backgroundColor: '#fff',
+    border: '2px solid currentColor',
+    marginTop: -8,
+    marginLeft: -12,
+    '&:focus, &:hover, &$active': {
+      boxShadow: 'inherit',
+    },
+  },
+  active: {},
+  valueLabel: {
+    left: 'calc(-50% + 4px)',
+  },
+  track: {
+    height: 10,
+    borderRadius: 8,
+  },
+  rail: {
+    height: 8,
+    borderRadius: 4,
+  },
+})(Slider);
 
 export default function Review() {
-  const [estado, setEstado] = React.useState('ES');
-  
-  const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    setEstado(event.target.value as string);
-  };
+const classes = useStyles();
   return (
     <React.Fragment>
-      <Typography variant="h6" gutterBottom>
-        Preço & Imagem
-      </Typography>
       <Grid container spacing={3}>
-        <Grid item xs={12}>
-          <TextField
-            id="endereco"
-            name="endereco"
-            label="Endereço"
-            fullWidth
-            autoComplete="Rua das oŕquídeas"
-            variant="standard"
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            id="cidade"
-            name="cidade"
-            label="Cidade"
-            fullWidth
-            autoComplete="Rio de Janeiro..."
-            variant="standard"
-          />
-        </Grid>
         <Grid item xs={12} sm={4}>
-          <TextField
-            required
-            id="cep"
-            name="cep"
-            label="Cep"
-            fullWidth
-            autoComplete="2916...."
-            variant="standard"
-          />
-        </Grid>
-        <Grid item xs={12} sm={2}>
-
-          <FormControl fullWidth>
-            <InputLabel id="estado">Estado</InputLabel>
-            <Select
-              labelId="estado"
-              id="estado"
-              value={estado}
-              onChange={handleChange}
-            >
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
-            </Select>
-          </FormControl>
-
-        </Grid>
-        <Grid item xs={12}>
-          <FormControlLabel
-            control={<Checkbox color="secondary" name="saveAddress" value="yes" />}
-            label="Utilizar este endereço para meios de pagamento"
-          />
+          <div className={classes.margin} />
+            <Typography gutterBottom>R$</Typography>
+          <div className={classes.margin} />
+            <PrettoSlider marks={marks} valueLabelDisplay="auto"  min={40} max={1000} aria-label="preço-BRL" defaultValue={40} />
+          <div className={classes.margin} />
+          <div className={classes.margin} />
         </Grid>
       </Grid>
     </React.Fragment>

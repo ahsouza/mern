@@ -10,11 +10,25 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
-import Input from '@material-ui/core/Input';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import AccountCircle from '@material-ui/icons/AccountCircle';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import PhotoCamera from '@material-ui/icons/PhotoCamera';
 
-export default function PaymentForm() {
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      '& > *': {
+        margin: theme.spacing(1),
+      },
+    },
+    input: {
+      display: 'none',
+    },
+  }),
+);
+
+export default function About() {
+  const classes = useStyles();
   const [quartos, setQuartos] = React.useState('0');
   const [banheiros, setBanheiros] = React.useState('0');
   const [salas, setSalas] = React.useState('0');
@@ -35,12 +49,9 @@ export default function PaymentForm() {
 
   return (
     <React.Fragment>
-      <Typography variant="h6" gutterBottom>
-        Conte um pouco mais do imóvel...
-      </Typography>
       <br/>
       <Grid container spacing={3}>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={8} md={12}>
           <TextField
             required
             id="nome"
@@ -48,17 +59,17 @@ export default function PaymentForm() {
             fullWidth
             autoComplete="Apartamento..."
             variant="standard"
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <AccountCircle />
-                </InputAdornment>
-              ),
-            }}
-
           />
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={4} md={6}>
+          <input accept="image/*" className={classes.input} id="icon-button-file" type="file" />
+          <label htmlFor="icon-button-file">
+            <IconButton color="primary" aria-label="upload picture" component="span">
+              <PhotoCamera />
+            </IconButton>
+          </label>
+        </Grid>
+        <Grid item xs={8} md={12}>
           <TextField
             id="descricao"
             label="Descrição"
@@ -67,23 +78,17 @@ export default function PaymentForm() {
             variant="standard"
           />
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={4} md={6}>
           <TextField
             id="metro_cubico"
             label="M³"
-            type="number"
             fullWidth
             autoComplete="1,65"
             variant="standard"
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <AccountCircle />
-                </InputAdornment>
-              ),
-            }}
+            
           />
         </Grid>
+
         <Grid item xs={3} md={6}>
           <FormControl fullWidth>
             <InputLabel id="quartos">Quartos</InputLabel>
