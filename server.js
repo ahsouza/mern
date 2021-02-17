@@ -7,7 +7,7 @@ const
  ImovelController = require("./controllers/imovel.controller")
 const app = express()
 
-var corsOptions = {origin: "http://localhost:3000"}
+var corsOptions = {origin: "http://localhost:4200"}
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
