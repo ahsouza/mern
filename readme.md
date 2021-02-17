@@ -47,10 +47,10 @@ branch: main
 <br>
 <br>
 
-| TECNOLOGIAS              | [MEAN](https://pt.wikipedia.org/wiki/MEAN_(conjunto_de_software) |
+| TECNOLOGIAS              | [MERN](https://pt.wikipedia.org/wiki/MEAN_(conjunto_de_software) |
 | ------------------------ | :----------------------------------------------------------- |
 | -                        | ✔ API com **Express.js** 
-| -                        | ✔ PWA com **Reactjs.js** em sua versão 17
+| -                        | ✔ PWA com **React.js** em sua versão 17
 | -                        | ✔ Banco de Dados **MySQL**                                                                      
 | -                        | ✔ Banco de Dados **MongoDB**                                                                      
 | -                        | ✔ Ambiente Runtime **Node.js**

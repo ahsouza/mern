@@ -10,8 +10,8 @@ module.exports = mongoose => {
         garagem: { type: Number, default: 0, minimum: 0, maximum: 1000 },
         sala: { type: Number, default: 0, minimum: 0, maximum: 100 },
         banheiros: { type: Number, default: 0, minimum: 0, maximum: 100 },
+        cep: { type: Number, required: true },
         endereco: String,
-        cep: Number,
         estado: String,
         cidade: String,
         published: Boolean
