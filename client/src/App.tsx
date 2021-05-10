@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import CheckoutImovel from './template/checkout/Checkout';
 import AppBarComponent from './components/AppBar';

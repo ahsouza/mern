@@ -1,16 +1,16 @@
-import * as React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Container from '@material-ui/core/Container';
-import Paper from '@material-ui/core/Paper';
-import Stepper from '@material-ui/core/Stepper';
-import Step from '@material-ui/core/Step';
-import StepLabel from '@material-ui/core/StepLabel';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import AddressForm from './AddressForm';
-import About from './About';
-import Review from './Review';
+import * as React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import Container from '@material-ui/core/Container'
+import Paper from '@material-ui/core/Paper'
+import Stepper from '@material-ui/core/Stepper'
+import Step from '@material-ui/core/Step'
+import StepLabel from '@material-ui/core/StepLabel'
+import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
+import AddressForm from './AddressForm'
+import About from './About'
+import Price from './Price'
 
 const useStyles = makeStyles((theme) => ({
   margin: {
@@ -44,35 +44,32 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(3),
     marginLeft: theme.spacing(1),
   },
-}));
+}))
 
-const steps = ['Endereço', 'Sobre', 'Preço'];
+const steps = ['Endereço', 'Sobre', 'Preço']
 
 function getStepContent(step: number) {
   switch (step) {
     case 0:
-      return <AddressForm />;
+      return <AddressForm />
     case 1:
-      return <About />;
+      return <About />
     case 2:
-      return <Review />;
+      return <Price />
     default:
-      throw new Error('Unknown step');
+      throw new Error('Unknown step')
   }
 }
 
 export default function Checkout() {
-  const classes = useStyles();
-  const [activeStep, setActiveStep] = React.useState(0);
-
+  const classes = useStyles()
+  const [activeStep, setActiveStep] = React.useState(0)
   const handleNext = () => {
-    setActiveStep(activeStep + 1);
-  };
-
+    setActiveStep(activeStep + 1)
+  }
   const handleBack = () => {
-    setActiveStep(activeStep - 1);
-  };
-
+    setActiveStep(activeStep - 1)
+  }
   return (
     <React.Fragment>
       <CssBaseline />
@@ -126,5 +123,5 @@ export default function Checkout() {
         </Paper>
       </Container>
     </React.Fragment>
-  );
+  )
 }
