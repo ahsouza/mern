@@ -1,18 +1,13 @@
-import * as React from 'react';
-import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import MenuItem from '@material-ui/core/MenuItem';
-import InputLabel from '@material-ui/core/InputLabel';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import PhotoCamera from '@material-ui/icons/PhotoCamera';
+import * as React from 'react'
+import Grid from '@material-ui/core/Grid'
+import TextField from '@material-ui/core/TextField'
+import MenuItem from '@material-ui/core/MenuItem'
+import InputLabel from '@material-ui/core/InputLabel'
+import FormControl from '@material-ui/core/FormControl'
+import Select from '@material-ui/core/Select'
+import { createStyles, Theme, makeStyles } from '@material-ui/core/styles'
+import IconButton from '@material-ui/core/IconButton'
+import PhotoCamera from '@material-ui/icons/PhotoCamera'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -25,33 +20,33 @@ const useStyles = makeStyles((theme: Theme) =>
       display: 'none',
     },
   }),
-);
+)
 
 export default function About() {
-  const classes = useStyles();
-  const [quartos, setQuartos] = React.useState('0');
-  const [banheiros, setBanheiros] = React.useState('0');
-  const [salas, setSalas] = React.useState('0');
-  const [vagas, setVagas] = React.useState('0');
+  const classes = useStyles()
+  const [quartos, setQuartos] = React.useState(0)
+  const [banheiros, setBanheiros] = React.useState(0)
+  const [salas, setSalas] = React.useState(0)
+  const [vagas, setVagas] = React.useState(0)
   
   const handleChangeQuartos = (event: React.ChangeEvent<{ value: unknown }>) => {
-    setQuartos(event.target.value as string);
-  };
+    setQuartos(event.target.value as number)
+  }
   const handleChangeBanheiros = (event: React.ChangeEvent<{ value: unknown }>) => {
-    setBanheiros(event.target.value as string);
-  };
+    setBanheiros(event.target.value as number)
+  }
   const handleChangeSalas = (event: React.ChangeEvent<{ value: unknown }>) => {
-    setSalas(event.target.value as string);
-  };
+    setSalas(event.target.value as number)
+  }
   const handleChangeVagas = (event: React.ChangeEvent<{ value: unknown }>) => {
-    setVagas(event.target.value as string);
-  };
+    setVagas(event.target.value as number)
+  }
 
   return (
     <React.Fragment>
       <br/>
       <Grid container spacing={3}>
-        <Grid item xs={8} md={12}>
+        <Grid item xs={8} md={6}>
           <TextField
             required
             id="nome"
@@ -78,18 +73,17 @@ export default function About() {
             variant="standard"
           />
         </Grid>
-        <Grid item xs={4} md={6}>
+        <Grid item xs={4} md={4}>
           <TextField
             id="metro_cubico"
             label="M³"
             fullWidth
             autoComplete="1,65"
             variant="standard"
-            
           />
         </Grid>
 
-        <Grid item xs={3} md={6}>
+        <Grid item xs={3} md={2}>
           <FormControl fullWidth>
             <InputLabel id="quartos">Quartos</InputLabel>
             <Select
@@ -107,7 +101,7 @@ export default function About() {
             </Select>
           </FormControl>
         </Grid>
-        <Grid item xs={3} md={6}>
+        <Grid item xs={3} md={2}>
           <FormControl fullWidth>
             <InputLabel id="banheiros">Banheiros</InputLabel>
             <Select
@@ -125,7 +119,7 @@ export default function About() {
             </Select>
           </FormControl>
         </Grid>
-        <Grid item xs={3} md={6}>
+        <Grid item xs={3} md={2}>
           <FormControl fullWidth>
             <InputLabel id="salas">Salas</InputLabel>
             <Select
@@ -143,7 +137,7 @@ export default function About() {
             </Select>
           </FormControl>
         </Grid>
-        <Grid item xs={3} md={6}>
+        <Grid item xs={3} md={2}>
           <FormControl fullWidth>
             <InputLabel id="vagas">Vagas</InputLabel>
             <Select
@@ -163,7 +157,7 @@ export default function About() {
           </FormControl>
         </Grid>
       </Grid>
-            <br/>
+      <br/>
     </React.Fragment>
-  );
+  )
 }
