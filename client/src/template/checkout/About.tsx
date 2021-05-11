@@ -8,6 +8,7 @@ import Select from '@material-ui/core/Select'
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles'
 import IconButton from '@material-ui/core/IconButton'
 import PhotoCamera from '@material-ui/icons/PhotoCamera'
+import ReactInputMask from 'react-input-mask'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -22,13 +23,23 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
+
 export default function About() {
+  let ref: HTMLInputElement | null = null
+  const firstLetter = /(?!.*[DFIOQU])[A-VXY]/i
+  const letter = /(?!.*[DFIOQU])[A-Z]/i
+  const digit = /[0-9]/
+  const cpf = /[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}/g
+  const mask = [firstLetter, digit, letter, " ", digit, letter, digit, cpf]
+
   const classes = useStyles()
   const [quartos, setQuartos] = React.useState(0)
   const [banheiros, setBanheiros] = React.useState(0)
   const [salas, setSalas] = React.useState(0)
   const [vagas, setVagas] = React.useState(0)
-  
+  const [telefone1, setTelefone1] = React.useState(0)
+  const [telefone2, setTelefone2] = React.useState(0)
+
   const handleChangeQuartos = (event: React.ChangeEvent<{ value: unknown }>) => {
     setQuartos(event.target.value as number)
   }
@@ -41,7 +52,13 @@ export default function About() {
   const handleChangeVagas = (event: React.ChangeEvent<{ value: unknown }>) => {
     setVagas(event.target.value as number)
   }
-
+  const handleChangeTelefone1 = (event: React.ChangeEvent<{ value: unknown }>) => {
+    setTelefone1(event.target.value as number)
+  }
+  const handleChangeTelefone2 = (event: React.ChangeEvent<{ value: unknown }>) => {
+    setTelefone2(event.target.value as number)
+  }
+  
   return (
     <React.Fragment>
       <br/>
@@ -155,6 +172,18 @@ export default function About() {
             </Select>
             <br/>
           </FormControl>
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <div className="material-form-field">
+            <ReactInputMask onChange={handleChangeTelefone1} id="telefone1" mask="+55 (99) 99999-9999" />
+            <label className="material-form-field-label" htmlFor="field-text">Telefone 1</label>
+          </div>
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <div className="material-form-field">
+            <ReactInputMask onChange={handleChangeTelefone2} id="telefone2" mask="+55 (99) 99999-9999" />
+            <label className="material-form-field-label" htmlFor="field-text">Telefone 2</label>
+          </div>
         </Grid>
       </Grid>
       <br/>
