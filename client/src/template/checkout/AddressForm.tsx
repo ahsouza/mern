@@ -13,8 +13,8 @@ export default function AddressForm() {
   const handleChangeCep = (event: React.ChangeEvent<{ value: unknown }>) => {
     setCep(event.target.value as number)
   }
-  const handleBlur = (event: React.ChangeEvent<{ value: unknown }>) => {
-    axios.get(`https://viacep.com.br/ws/${cep}/json`, {})
+  const handleBlur = () => {
+    axios.get(`https://viacep.com.br/ws/${cep}/json`)
     .then(res => {
       setCidade(res.data.localidade)
       setBairro(res.data.bairro)
