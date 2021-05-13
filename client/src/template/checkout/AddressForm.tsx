@@ -1,59 +1,57 @@
-import * as React from 'react'
+import React from 'react'
 import Grid from '@material-ui/core/Grid'
 import TextField from '@material-ui/core/TextField'
 import axios from 'axios'
 
-export default function AddressForm() {
-  const [cep, setCep] = React.useState(0)
-  const [bairro, setBairro] = React.useState('')
-  const [logradouro, setLogradouro] = React.useState('')
-  const [cidade, setCidade] = React.useState('')
-  const [estado, setEstado] = React.useState('')
+interface Endereco {
+  cep: string
+  bairro: string
+  logradouro: string
+  cidade: string
+  estado: string
+}
 
-  const handleChangeCep = (event: React.ChangeEvent<{ value: unknown }>) => {
+const AddressForm: React.FC = () => {
+  const [cep, setCep] = React.useState(0)
+  const [endereco, setEndereco] = React.useState<Endereco>({} as Endereco)
+ 
+  const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
     setCep(event.target.value as number)
   }
+
   const handleBlur = () => {
     axios.get(`https://viacep.com.br/ws/${cep}/json`)
     .then(res => {
-      setCidade(res.data.localidade)
-      setBairro(res.data.bairro)
-      setLogradouro(res.data.logradouro)
-      setEstado(res.data.uf)
+      setEndereco({
+        ...endereco,
+        cep: res.data.cep,
+        cidade: res.data.localidade,
+        bairro: res.data.bairro,
+        logradouro: res.data.logradouro,
+        estado: res.data.uf
+      })
     })
   }
 
   return (
     <React.Fragment>
       <br/>
-      <Grid container spacing={2}>
-        <Grid item xs={3} sm={4}>
+      <Grid container spacing={3}>
+        <Grid item xs={8} sm={4}>
           <TextField
             required
-            onChange={handleChangeCep}
+            onChange={handleChange}
             onBlur={handleBlur}
-            id="cep"
             name="cep"
             label="Cep"
-            fullWidth
-            autoComplete="2021...."
             variant="standard"
+            fullWidth
             inputProps={{ maxLength: 8 }}
           />
         </Grid>
-        <Grid item xs={6} sm={4}>
+
+        <Grid item xs={4} sm={3}>
           <TextField
-            id="bairro"
-            name="bairro"
-            label="Bairro"
-            value={bairro}
-            fullWidth
-            variant="standard"
-          />
-        </Grid>
-        <Grid item xs={3} sm={4}>
-          <TextField
-            id="numero"
             name="numero"
             label="Nº"
             fullWidth
@@ -61,38 +59,51 @@ export default function AddressForm() {
             variant="standard"
           />
         </Grid>
-        <Grid item xs={10} sm={8}>
+        <Grid item xs={8} sm={8}>
           <TextField
-            id="cidade"
+            defaultValue="Cidade"
             name="cidade"
-            label="Cidade"
-            value={cidade}
+            value={endereco.cidade}
+            InputProps={{ readOnly: true }}
             fullWidth
             variant="standard"
           />
         </Grid>
-        <Grid item xs={2} sm={2}>
+        <Grid item xs={4} sm={2}>
           <TextField
-            id="estado"
+            defaultValue="Estado"
             name="estado"
-            label="Estado"
-            value={estado}
+            value={endereco.estado}
+            InputProps={{ readOnly: true }}
             fullWidth
             variant="standard"
           />
         </Grid>
         <Grid item xs={12} sm={8}>
           <TextField
-            id="logradouro"
+            defaultValue="Logradouro"
             name="logradouro"
-            label="Logradouro"
+            InputProps={{ readOnly: true }}
+            value={endereco.logradouro}
             fullWidth
-            value={logradouro}
             variant="standard"
           />
         </Grid>
-    </Grid>
-    <br/>
-  </React.Fragment>
+
+        <Grid item xs={6} sm={4}>
+          <TextField
+            name="bairro"
+            defaultValue="Bairro"
+            value={endereco.bairro}
+            InputProps={{ readOnly: true }}
+            fullWidth
+            variant="standard"
+          />
+        </Grid>
+      </Grid>
+      <br/>
+    </React.Fragment>
   )
 }
+
+export default AddressForm
