@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { InputHTMLAttributes } from 'react'
 import Grid from '@material-ui/core/Grid'
 import TextField from '@material-ui/core/TextField'
 import axios from 'axios'
-
+import Input from '../../components/input/index'
 interface Endereco {
   cep: string
   bairro: string
@@ -11,7 +11,7 @@ interface Endereco {
   estado: string
 }
 
-const AddressForm: React.FC = () => {
+const AddressForm: React.FC<InputHTMLAttributes<HTMLInputElement>> = () => {
   const [cep, setCep] = React.useState(0)
   const [endereco, setEndereco] = React.useState<Endereco>({} as Endereco)
  
@@ -38,18 +38,12 @@ const AddressForm: React.FC = () => {
       <br/>
       <Grid container spacing={3}>
         <Grid item xs={8} sm={4}>
-          <TextField
-            required
+          <Input 
+            name="cep" 
             onChange={handleChange}
-            onBlur={handleBlur}
-            name="cep"
-            label="Cep"
-            variant="standard"
-            fullWidth
-            inputProps={{ maxLength: 8 }}
+            onBlur={handleBlur} mask="cep" 
           />
         </Grid>
-
         <Grid item xs={4} sm={3}>
           <TextField
             name="numero"
@@ -89,8 +83,7 @@ const AddressForm: React.FC = () => {
             variant="standard"
           />
         </Grid>
-
-        <Grid item xs={6} sm={4}>
+        <Grid item xs={12} sm={4}>
           <TextField
             name="bairro"
             defaultValue="Bairro"
@@ -105,5 +98,4 @@ const AddressForm: React.FC = () => {
     </React.Fragment>
   )
 }
-
 export default AddressForm
